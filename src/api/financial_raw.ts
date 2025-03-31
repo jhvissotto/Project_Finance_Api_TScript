@@ -1,3 +1,4 @@
+import { baseUrl } from './config'
 import { client } from './client'
 
 
@@ -26,8 +27,10 @@ export type Res = Array<{
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
+const endpoint = ({ slug }: Req) => baseUrl(`/financial-raw/${slug}`)
+
 export async function get({ slug }:Req) {
-    return await client(`/financial-raw/${slug}`)
+    return await client(endpoint({ slug }))
         .then(x => x.json() as Promise<Res>)
         .catch(x => [])
 }

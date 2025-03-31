@@ -1,4 +1,4 @@
-
+import { baseUrl } from './config'
 import { client } from './client'
 
 
@@ -210,8 +210,10 @@ export type Res = {
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
+export const endpoint = ({ TICKER }: Req) => baseUrl(`/info/${TICKER}`)
+
 export async function get({ TICKER }:Req) {
-    return await client(`/info/${TICKER}`)
+    return await client(endpoint({ TICKER }))
         .then(x => x.json() as Promise<Res>)
         .catch(() => {})
 }

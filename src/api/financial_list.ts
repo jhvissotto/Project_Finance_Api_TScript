@@ -1,3 +1,4 @@
+import { baseUrl } from './config'
 import { client } from './client'
 
 
@@ -21,8 +22,10 @@ export type Res = Array<{
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-export async function get({ pages=1 }:Req) {
-    return await client(`/financial-list?pages=${pages}`)
+export const endpoint = ({ pages }: Req) => baseUrl(`/financial-list?pages=${pages}`)
+
+export async function get({ pages = 1 }:Req) {
+    return await client(endpoint({ pages }))
         .then(x => x.json() as Promise<Res>)
         .catch(() => [])
 }
