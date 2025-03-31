@@ -1,5 +1,7 @@
 {
   "name": "finance-analytics-api",
+  "description": "Discovering Financial Market Secrets",
+  "version": "1.0.2",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
