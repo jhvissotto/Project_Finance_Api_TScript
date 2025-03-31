@@ -2,8 +2,13 @@
 
 ⭐ Portal:   https://bit.ly/finance_analytics  
 📊 Blog:     https://slashpage.com/jh-analytics  
-🐍 Python:   https://github.com/jhvissotto/Project_Finance_Api  
+
+🐍 Python:   https://github.com/jhvissotto/Project_Finance_Api_Python  
 🐍 Pypi:     https://pypi.org/project/jh-finance-api  
+
+🟦 TScript:  https://github.com/jhvissotto/Project_Finance_Api_TScript  
+🟦 NPM:      ...  
+
 🔌 Server:   https://bit.ly/jh_finance_api  
 🔌 Swagger:  https://bit.ly/jh_finance_api_swagger  
 
