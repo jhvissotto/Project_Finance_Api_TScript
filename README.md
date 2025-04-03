@@ -1,22 +1,28 @@
-## Finance Project
+## Ecosystem
 
-⭐ Portal:    https://bit.ly/finance_analytics  
-📊 Blog:      https://slashpage.com/jh-analytics  
+⭐ Portal:     https://bit.ly/finance_analytics  
+📊 Blog:       https://slashpage.com/jh-analytics  
 
-📈 Softrader: https://pypi.org/project/softrader  
+📈 Softrader:  https://pypi.org/project/softrader  
 
-🐍 Python:    https://github.com/jhvissotto/Project_Finance_Api_Python  
-🐍 Pypi:      https://pypi.org/project/jh-finance-api  
+🐍 Python:     https://github.com/jhvissotto/Project_Finance_Api_Python  
+🐍 Pypi:       https://pypi.org/project/jh-finance-api  
 
-🟦 TScript:   https://github.com/jhvissotto/Project_Finance_Api_TScript  
-🟦 NPM:       https://www.npmjs.com/package/finance-analytics-api  
+🟦 TScript:    https://github.com/jhvissotto/Project_Finance_Api_TScript  
+🟦 NPM:        https://www.npmjs.com/package/finance-analytics-api  
 
-🔌 Server:    https://bit.ly/jh_finance_api  
-🔌 Swagger:   https://bit.ly/jh_finance_api_swagger  
+🧮 PyHelpers:  https://github.com/jhvissotto/Library_Python_Helpers  
+
+🔌 Server:     https://bit.ly/jh_finance_api  
+🔌 Swagger:    https://bit.ly/jh_finance_api_swagger  
 
 
 ## TScript Library Api 
 
+
+```
+npm install finance-analytics-api
+```
 
 ```ts
 import { api } from 'finance-analytics-api'
