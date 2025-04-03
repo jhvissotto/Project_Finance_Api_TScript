@@ -1,28 +1,29 @@
 ## Finance Project
 
-⭐ Portal:   https://bit.ly/finance_analytics  
-📊 Blog:     https://slashpage.com/jh-analytics  
+⭐ Portal:    https://bit.ly/finance_analytics  
+📊 Blog:      https://slashpage.com/jh-analytics  
 
-🐍 Python:   https://github.com/jhvissotto/Project_Finance_Api_Python  
-🐍 Pypi:     https://pypi.org/project/jh-finance-api  
+📈 Softrader: https://pypi.org/project/softrader  
 
-🟦 TScript:  https://github.com/jhvissotto/Project_Finance_Api_TScript  
-🟦 NPM:      https://www.npmjs.com/package/finance-analytics-api  
+🐍 Python:    https://github.com/jhvissotto/Project_Finance_Api_Python  
+🐍 Pypi:      https://pypi.org/project/jh-finance-api  
 
-🔌 Server:   https://bit.ly/jh_finance_api  
-🔌 Swagger:  https://bit.ly/jh_finance_api_swagger  
+🟦 TScript:   https://github.com/jhvissotto/Project_Finance_Api_TScript  
+🟦 NPM:       https://www.npmjs.com/package/finance-analytics-api  
 
+🔌 Server:    https://bit.ly/jh_finance_api  
+🔌 Swagger:   https://bit.ly/jh_finance_api_swagger  
 
 
 ## TScript Library Api 
 
 
-```Typescript
+```ts
 import { api } from 'finance-analytics-api'
 ```
 
 
-```Typescript
+```ts
 async function info() {
     type  Res  =       api.info.Res
     const mock =       api.info.sample_res 
@@ -31,7 +32,7 @@ async function info() {
 ```
 
 
-```Typescript
+```ts
 async function financial_list() {
     type  Res  =       api.financial_list.Res
     const mock =       api.financial_list.sample_res
@@ -40,7 +41,7 @@ async function financial_list() {
 ```
 
 
-```Typescript
+```ts
 async function financial_raw() {
     type  Res  =       api.financial_raw.Res
     const mock =       api.financial_raw.sample_res
@@ -49,7 +50,7 @@ async function financial_raw() {
 ```
 
 
-```Typescript
+```ts
 async function financial_ratios() {
     type  Res  =       api.financial_ratios.Res
     const mock =       api.financial_ratios.sample_res
