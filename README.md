@@ -28,6 +28,7 @@ npm install finance-analytics-api
 import { api } from 'finance-analytics-api'
 ```
 
+## Info
 
 ```ts
 async function info() {
@@ -36,6 +37,18 @@ async function info() {
     const res  = await api.info.get({ TICKER:'MSFT' })
 }
 ```
+
+## Market
+
+```ts
+async function market_history() {
+    type  Res  =       api.market_history.Res
+    const mock =       api.market_history.sample_res 
+    const res  = await api.market_history.get({ TICKER:'MSFT', period:'1mo', until:'max' })
+}
+```
+
+## Financial
 
 
 ```ts
