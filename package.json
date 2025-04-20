@@ -1,9 +1,19 @@
 {
   "name": "finance-analytics-api",
   "description": "Discovering Financial Market Secrets",
-  "version": "1.0.6",
-  "module": "index.ts",
+  "version": "1.0.7",
+
+  "author": "Jose Henrique V.",
+  "license": "ISC",
+ 
   "type": "module",
+  "main": "index.js",
+  "module": "index.ts",
+  "exports": {
+    ".":      "./src/index.js",
+    "./api":  "./src/api/index.js"
+  },
+
   "devDependencies": {
     "@types/bun": "latest"
   },
