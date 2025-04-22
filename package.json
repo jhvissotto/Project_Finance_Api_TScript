@@ -1,7 +1,7 @@
 {
   "name": "finance-analytics-api",
   "description": "Discovering Financial Market Secrets",
-  "version": "1.0.8",
+  "version": "1.0.9",
 
   "author": "Jose Henrique V.",
   "license": "ISC",
@@ -19,5 +19,14 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+
+  "homepage": "https://github.com/jhvissotto/Project_Finance_Api_TScript#readme",
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/jhvissotto/Project_Finance_Api_TScript.git"
+  },
+  "bugs": { 
+      "url": "https://github.com/jhvissotto/Project_Finance_Api_TScript/issues"
   }
 }
