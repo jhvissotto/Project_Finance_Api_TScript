@@ -39,7 +39,7 @@ export async function get({ slug }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://project-finance-backend.onrender.com/financial-raw/microsoft'
+export const sample_req = 'https://proj-finance-backend.onrender.com/financial-raw/microsoft'
 export const sample_res = [
     {
       "Year": 2025,

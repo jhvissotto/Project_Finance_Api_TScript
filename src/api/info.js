@@ -28,7 +28,7 @@ function get(_a) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://project-finance-backend.onrender.com/info/MSFT';
+exports.sample_req = 'https://proj-finance-backend.onrender.com/info/MSFT';
 exports.sample_res = {
     "address1": "One Microsoft Way",
     "city": "Redmond",

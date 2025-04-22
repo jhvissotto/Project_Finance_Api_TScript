@@ -222,7 +222,7 @@ export async function get({ TICKER }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://project-finance-backend.onrender.com/info/MSFT'
+export const sample_req = 'https://proj-finance-backend.onrender.com/info/MSFT'
 export const sample_res = {
     "address1": "One Microsoft Way",
     "city": "Redmond",

@@ -36,11 +36,14 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.financial_ratios = exports.financial_raw = exports.financial_list = exports.market_history = exports.info = void 0;
+exports.performance_annual = exports.options_stack = exports.market_history = exports.financial_ratios = exports.financial_raw = exports.financial_list = exports.info = exports.protocols = void 0;
 __exportStar(require("./config"), exports);
 __exportStar(require("./client"), exports);
+exports.protocols = __importStar(require("./protocols"));
 exports.info = __importStar(require("./info"));
-exports.market_history = __importStar(require("./market_history"));
 exports.financial_list = __importStar(require("./financial_list"));
 exports.financial_raw = __importStar(require("./financial_raw"));
 exports.financial_ratios = __importStar(require("./financial_ratios"));
+exports.market_history = __importStar(require("./market_history"));
+exports.options_stack = __importStar(require("./options_stack"));
+exports.performance_annual = __importStar(require("./performance_annual"));

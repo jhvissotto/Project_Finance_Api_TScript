@@ -1,3 +1,4 @@
+import { type Periods, type Untils, initial } from './protocols'
 import { baseUrl } from './config'
 import { client } from './client'
 
@@ -7,8 +8,8 @@ import { client } from './client'
 // ================================================= //
 export type Req = { 
     TICKER:   string
-    period?:  '1m'|'2m'|'5m'|'15m'|'30m'|'60m'|'90m'|'1h'|'1d'|'5d'|'1wk'|'1mo'|'3mo'
-    until?:   '1d'|'5d'|'1mo'|'3mo'|'6mo'|'1y'|'2y'|'5y'|'10y'|'ytd'|'max'
+    period?:  Periods
+    until?:   Untils
 }
 
 
@@ -34,7 +35,7 @@ export const endpoint = ({ TICKER, period, until }: Req) => {
 }
 
 
-export async function get({ TICKER, period='1mo', until='max' }:Req) {
+export async function get({ TICKER, period=initial.period, until=initial.until }:Req) {
     return await client(endpoint({ TICKER, period, until }))
         .then(x => x.json() as Promise<Res>)
         .catch(() => [])
@@ -44,7 +45,7 @@ export async function get({ TICKER, period='1mo', until='max' }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://project-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max'
+export const sample_req = 'https://proj-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max'
 export const sample_res = [
   {
     "Date": "2025-04-01T00:00:00",

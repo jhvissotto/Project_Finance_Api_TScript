@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sample_res = exports.sample_req = exports.endpoint = void 0;
 exports.get = get;
+const protocols_1 = require("./protocols");
 const config_1 = require("./config");
 const client_1 = require("./client");
 // ================================================== //
@@ -21,7 +22,7 @@ const endpoint = ({ TICKER, period, until }) => {
 };
 exports.endpoint = endpoint;
 function get(_a) {
-    return __awaiter(this, arguments, void 0, function* ({ TICKER, period = '1mo', until = 'max' }) {
+    return __awaiter(this, arguments, void 0, function* ({ TICKER, period = protocols_1.initial.period, until = protocols_1.initial.until }) {
         return yield (0, client_1.client)((0, exports.endpoint)({ TICKER, period, until }))
             .then(x => x.json())
             .catch(() => []);
@@ -30,7 +31,7 @@ function get(_a) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://project-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max';
+exports.sample_req = 'https://proj-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max';
 exports.sample_res = [
     {
         "Date": "2025-04-01T00:00:00",

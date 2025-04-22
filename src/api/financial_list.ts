@@ -34,7 +34,7 @@ export async function get({ pages = 1 }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://project-finance-backend.onrender.com/financial-list?pages=1'
+export const sample_req = 'https://proj-finance-backend.onrender.com/financial-list?pages=1'
 export const sample_res = [
     {
       "Country": "USA",

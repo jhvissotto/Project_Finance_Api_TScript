@@ -54,7 +54,7 @@ export async function get({ slug }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://project-finance-backend.onrender.com/financial-ratios/microsoft'
+export const sample_req = 'https://proj-finance-backend.onrender.com/financial-ratios/microsoft'
 export const sample_res = {
     "Raw": [
       {

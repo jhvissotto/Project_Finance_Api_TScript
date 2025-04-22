@@ -27,7 +27,7 @@ function get(_a) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://project-finance-backend.onrender.com/financial-raw/microsoft';
+exports.sample_req = 'https://proj-finance-backend.onrender.com/financial-raw/microsoft';
 exports.sample_res = [
     {
         "Year": 2025,
