@@ -19,12 +19,12 @@ const client_1 = require("./client");
 // ==================== Endpoint ==================== //
 // ================================================== //
 exports.initial = {};
-function endpoint({ TICKER }) {
-    return helpers_1.builder.stringify([config_1.config.baseUrl, 'performance-annual', TICKER], {});
+function endpoint({ TICKER }, query) {
+    return helpers_1.builder.stringify([config_1.config.baseUrl, 'equity-logomark', TICKER], query);
 }
-function get(params) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield (0, client_1.client)(endpoint(params))
+function get(params_1) {
+    return __awaiter(this, arguments, void 0, function* (params, query = exports.initial) {
+        return yield (0, client_1.client)(endpoint(params, query))
             .then(x => x.json())
             .catch(() => { });
     });
@@ -32,8 +32,7 @@ function get(params) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://project-finance-backend.onrender.com/performance-annual/MSFT';
+exports.sample_req = 'https://project-finance-backend.onrender.com/equity-logomark/MSFT?dim=128';
 exports.sample_res = {
-    "img_src64_cum": "...",
-    "img_src64_var": "...",
+    "imgB64": "UklGRqQAAABXRUJQVlA4TJgAAAAvf8AfEBK3AduGzYs8kk+A72lkkraT1bkdBAKEc88GCASSWPZ3WwFpbSs5JPiZxNbsQGQIUJfQ7CBMgGqqVaXC7m5k0Y2mOfrHf2co0etSdbPqqFzFI9Iooh11b7SiVKFaxSoaEUUSofm7H38zqs1spsGICUPz39zN5mP232DKgm3WvWyxNE+1ucwYzNhj08z+JbB7/Hd4Ag=="
 };

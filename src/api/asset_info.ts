@@ -1,18 +1,18 @@
-import { baseUrl } from './config'
+import { builder } from './helpers'
+import { config } from './config'
 import { client } from './client'
 
 
-// ================================================= //
-// ==================== Request ==================== //
-// ================================================= //
-export type Req = { 
+// =================================================== //
+// ==================== Interface ==================== //
+// =================================================== //
+export type Req_params = { 
     TICKER: string 
 }
 
+export type Req_query = { }
 
-// ================================================== //
-// ==================== Response ==================== //
-// ================================================== //
+
 export type Res = {
     address1: string;
     city: string;
@@ -210,10 +210,16 @@ export type Res = {
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-export const endpoint = ({ TICKER }: Req) => baseUrl(`/info/${TICKER}`)
+export const initial = {} as Req_query
 
-export async function get({ TICKER }:Req) {
-    return await client(endpoint({ TICKER }))
+
+export function endpoint({ TICKER }:Req_params) {
+  return builder.stringify([config.baseUrl, 'asset-info', TICKER], {})
+}
+
+
+export async function get(params:Req_params) {
+    return await client(endpoint(params))
         .then(x => x.json() as Promise<Res>)
         .catch(() => {})
 }
@@ -222,7 +228,7 @@ export async function get({ TICKER }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://proj-finance-backend.onrender.com/info/MSFT'
+export const sample_req = 'https://project-finance-backend.onrender.com/asset-info/MSFT'
 export const sample_res = {
     "address1": "One Microsoft Way",
     "city": "Redmond",

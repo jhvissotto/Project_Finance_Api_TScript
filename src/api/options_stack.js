@@ -9,17 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sample_res = exports.sample_req = void 0;
+exports.sample_res = exports.sample_req = exports.initial = void 0;
+exports.endpoint = endpoint;
 exports.get = get;
+const helpers_1 = require("./helpers");
 const config_1 = require("./config");
 const client_1 = require("./client");
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-const endpoint = ({ TICKER }) => (0, config_1.baseUrl)(`/options-stack/${TICKER}`);
-function get(_a) {
-    return __awaiter(this, arguments, void 0, function* ({ TICKER }) {
-        return yield (0, client_1.client)(endpoint({ TICKER }))
+exports.initial = {};
+function endpoint({ TICKER }) {
+    return helpers_1.builder.stringify([config_1.config.baseUrl, 'options-stack', TICKER], {});
+}
+function get(params) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield (0, client_1.client)(endpoint(params))
             .then(x => x.json())
             .catch(x => []);
     });
@@ -27,7 +32,7 @@ function get(_a) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://proj-finance-backend.onrender.com/options-stack/MSFT';
+exports.sample_req = 'https://project-finance-backend.onrender.com/options-stack/MSFT';
 exports.sample_res = [
     {
         "Code": "MSFT250411C00230000",

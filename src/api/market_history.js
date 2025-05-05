@@ -1,4 +1,37 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,21 +42,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sample_res = exports.sample_req = exports.endpoint = void 0;
+exports.sample_res = exports.sample_req = exports.initial = void 0;
+exports.endpoint = endpoint;
 exports.get = get;
-const protocols_1 = require("./protocols");
+const helpers_1 = require("./helpers");
+const protocols = __importStar(require("./protocols"));
 const config_1 = require("./config");
 const client_1 = require("./client");
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-const endpoint = ({ TICKER, period, until }) => {
-    return (0, config_1.baseUrl)(`/market-history/${TICKER}?period=${period}&until=${until}`);
+exports.initial = {
+    period: protocols.initial.period,
+    until: protocols.initial.until,
 };
-exports.endpoint = endpoint;
+function endpoint({ TICKER }, query) {
+    return helpers_1.builder.stringify([config_1.config.baseUrl, 'market-history', TICKER], query);
+}
 function get(_a) {
-    return __awaiter(this, arguments, void 0, function* ({ TICKER, period = protocols_1.initial.period, until = protocols_1.initial.until }) {
-        return yield (0, client_1.client)((0, exports.endpoint)({ TICKER, period, until }))
+    return __awaiter(this, arguments, void 0, function* ({ TICKER }, query = exports.initial) {
+        return yield (0, client_1.client)(endpoint({ TICKER }, query))
             .then(x => x.json())
             .catch(() => []);
     });
@@ -31,7 +69,7 @@ function get(_a) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://proj-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max';
+exports.sample_req = 'https://project-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max';
 exports.sample_res = [
     {
         "Date": "2025-04-01T00:00:00",

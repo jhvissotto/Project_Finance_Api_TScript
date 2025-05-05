@@ -20,7 +20,7 @@ const client_1 = require("./client");
 // ================================================== //
 exports.initial = {};
 function endpoint({ slug }) {
-    return helpers_1.builder.stringify([config_1.config.baseUrl, 'financial-ratios', slug], {});
+    return helpers_1.builder.stringify([config_1.config.baseUrl, 'financial-indicators', slug], {});
 }
 function get(params) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -32,13 +32,13 @@ function get(params) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://project-finance-backend.onrender.com/financial-ratios/microsoft';
+exports.sample_req = 'https://project-finance-backend.onrender.com/financial-indicators/microsoft';
 exports.sample_res = {
     "Raw": [
         {
             "Year": 2025,
             "Shares": 7430,
-            "Capital": 2748000,
+            "Capital": 2925000,
             "DYield": 0.81,
             "Revenue": 261800,
             "Income": 113610,
@@ -340,13 +340,13 @@ exports.sample_res = {
         {
             "N": 0,
             "Year": 2025,
-            "Cap Var": -14.12,
+            "Cap Var": -8.59,
             "Rev Grw": 15.04,
             "Ast Grw": 24.32,
             "DY": 0.81,
-            "EY": 4.13,
-            "P/S": 10.5,
-            "P/A": 5.37,
+            "EY": 3.88,
+            "P/S": 11.17,
+            "P/A": 5.71,
             "Margin": 43.4,
             "ROA": 22.2,
             "E/A": 52.4
@@ -757,5 +757,283 @@ exports.sample_res = {
             "ROA": null,
             "E/A": null
         }
-    ]
+    ],
+    "Accum": [
+        {
+            "N": 0,
+            "Year": 2025,
+            "Cap Cum": 29.424,
+            "Rev Cum": 27.762,
+            "Inc Cum": 29.897,
+            "Ast Cum": 8.706,
+            "Eqt Cum": 5.678
+        },
+        {
+            "N": -1,
+            "Year": 2024,
+            "Cap Cum": 32.19,
+            "Rev Cum": 24.134,
+            "Inc Cum": 26.634,
+            "Ast Cum": 7.003,
+            "Eqt Cum": 4.362
+        },
+        {
+            "N": -2,
+            "Year": 2023,
+            "Cap Cum": 28.106,
+            "Rev Cum": 21.643,
+            "Inc Cum": 21.732,
+            "Ast Cum": 6.202,
+            "Eqt Cum": 3.522
+        },
+        {
+            "N": -3,
+            "Year": 2022,
+            "Cap Cum": 17.976,
+            "Rev Cum": 19.608,
+            "Inc Cum": 20.968,
+            "Ast Cum": 5.673,
+            "Eqt Cum": 3.003
+        },
+        {
+            "N": -4,
+            "Year": 2021,
+            "Cap Cum": 25.37,
+            "Rev Cum": 16.255,
+            "Inc Cum": 15.979,
+            "Ast Cum": 5.122,
+            "Eqt Cum": 2.502
+        },
+        {
+            "N": -5,
+            "Year": 2020,
+            "Cap Cum": 16.91,
+            "Rev Cum": 14.235,
+            "Inc Cum": 13.118,
+            "Ast Cum": 4.871,
+            "Eqt Cum": 2.164
+        },
+        {
+            "N": -6,
+            "Year": 2019,
+            "Cap Cum": 12.071,
+            "Rev Cum": 12.561,
+            "Inc Cum": 10.505,
+            "Ast Cum": 4.4,
+            "Eqt Cum": 1.749
+        },
+        {
+            "N": -7,
+            "Year": 2018,
+            "Cap Cum": 7.85,
+            "Rev Cum": 10.602,
+            "Inc Cum": 7.839,
+            "Ast Cum": 4.255,
+            "Eqt Cum": 1.855
+        },
+        {
+            "N": -8,
+            "Year": 2017,
+            "Cap Cum": 6.638,
+            "Rev Cum": 9.426,
+            "Inc Cum": 6.113,
+            "Ast Cum": 3.288,
+            "Eqt Cum": 1.523
+        },
+        {
+            "N": -9,
+            "Year": 2016,
+            "Cap Cum": 4.86,
+            "Rev Cum": 9.34,
+            "Inc Cum": 4.242,
+            "Ast Cum": 2.966,
+            "Eqt Cum": 1.694
+        },
+        {
+            "N": -10,
+            "Year": 2015,
+            "Cap Cum": 4.423,
+            "Rev Cum": 9.91,
+            "Inc Cum": 7.179,
+            "Ast Cum": 2.93,
+            "Eqt Cum": 1.899
+        },
+        {
+            "N": -11,
+            "Year": 2014,
+            "Cap Cum": 3.84,
+            "Rev Cum": 8.847,
+            "Inc Cum": 7.376,
+            "Ast Cum": 2.421,
+            "Eqt Cum": 1.67
+        },
+        {
+            "N": -12,
+            "Year": 2013,
+            "Cap Cum": 3.123,
+            "Rev Cum": 7.734,
+            "Inc Cum": 5.268,
+            "Ast Cum": 2.061,
+            "Eqt Cum": 1.404
+        },
+        {
+            "N": -13,
+            "Year": 2012,
+            "Cap Cum": 2.25,
+            "Rev Cum": 7.641,
+            "Inc Cum": 7.337,
+            "Ast Cum": 1.848,
+            "Eqt Cum": 1.207
+        },
+        {
+            "N": -14,
+            "Year": 2011,
+            "Cap Cum": 2.197,
+            "Rev Cum": 7.072,
+            "Inc Cum": 7.129,
+            "Ast Cum": 1.464,
+            "Eqt Cum": 0.977
+        },
+        {
+            "N": -15,
+            "Year": 2010,
+            "Cap Cum": 2.359,
+            "Rev Cum": 6.223,
+            "Inc Cum": 5.747,
+            "Ast Cum": 1.324,
+            "Eqt Cum": 0.837
+        },
+        {
+            "N": -16,
+            "Year": 2009,
+            "Cap Cum": 2.701,
+            "Rev Cum": 6.573,
+            "Inc Cum": 5.895,
+            "Ast Cum": 1.237,
+            "Eqt Cum": 0.767
+        },
+        {
+            "N": -17,
+            "Year": 2008,
+            "Cap Cum": 1.739,
+            "Rev Cum": 6.139,
+            "Inc Cum": 6.392,
+            "Ast Cum": 1.074,
+            "Eqt Cum": 0.658
+        },
+        {
+            "N": -18,
+            "Year": 2007,
+            "Cap Cum": 3.341,
+            "Rev Cum": 4.883,
+            "Inc Cum": 4.582,
+            "Ast Cum": 1.183,
+            "Eqt Cum": 0.848
+        },
+        {
+            "N": -19,
+            "Year": 2006,
+            "Cap Cum": 2.937,
+            "Rev Cum": 4.385,
+            "Inc Cum": 4.571,
+            "Ast Cum": 1.204,
+            "Eqt Cum": 1.018
+        },
+        {
+            "N": -20,
+            "Year": 2005,
+            "Cap Cum": 2.732,
+            "Rev Cum": 4.08,
+            "Inc Cum": 3.926,
+            "Ast Cum": 1.604,
+            "Eqt Cum": 1.582
+        },
+        {
+            "N": -21,
+            "Year": 2004,
+            "Cap Cum": 2.924,
+            "Rev Cum": 3.633,
+            "Inc Cum": 3.229,
+            "Ast Cum": 1.389,
+            "Eqt Cum": 1.373
+        },
+        {
+            "N": -22,
+            "Year": 2003,
+            "Cap Cum": 2.97,
+            "Rev Cum": 3.264,
+            "Inc Cum": 3.134,
+            "Ast Cum": 1.15,
+            "Eqt Cum": 1.104
+        },
+        {
+            "N": -23,
+            "Year": 2002,
+            "Cap Cum": 2.783,
+            "Rev Cum": 2.834,
+            "Inc Cum": 2.368,
+            "Ast Cum": 1,
+            "Eqt Cum": 1
+        },
+        {
+            "N": -24,
+            "Year": 2001,
+            "Cap Cum": 3.602,
+            "Rev Cum": 2.521,
+            "Inc Cum": 3.955,
+            "Ast Cum": null,
+            "Eqt Cum": null
+        },
+        {
+            "N": -25,
+            "Year": 2000,
+            "Cap Cum": 2.322,
+            "Rev Cum": 2.398,
+            "Inc Cum": 3.511,
+            "Ast Cum": null,
+            "Eqt Cum": null
+        },
+        {
+            "N": -26,
+            "Year": 1999,
+            "Cap Cum": 6.08,
+            "Rev Cum": 1.819,
+            "Inc Cum": 2.55,
+            "Ast Cum": null,
+            "Eqt Cum": null
+        },
+        {
+            "N": -27,
+            "Year": 1998,
+            "Cap Cum": 3.502,
+            "Rev Cum": 1.388,
+            "Inc Cum": 1.632,
+            "Ast Cum": null,
+            "Eqt Cum": null
+        },
+        {
+            "N": -28,
+            "Year": 1997,
+            "Cap Cum": 1.583,
+            "Rev Cum": 1,
+            "Inc Cum": 1,
+            "Ast Cum": null,
+            "Eqt Cum": null
+        },
+        {
+            "N": -29,
+            "Year": 1996,
+            "Cap Cum": 1,
+            "Rev Cum": null,
+            "Inc Cum": null,
+            "Ast Cum": null,
+            "Eqt Cum": null
+        }
+    ],
+    "img_src64_cap": "...",
+    "img_src64_rev": "...",
+    "img_src64_ast": "...",
+    "img_src64_prft": "...",
+    "img_src64_yld": "...",
+    "img_src64_val": "...",
 };

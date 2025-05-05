@@ -9,18 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sample_res = exports.sample_req = exports.endpoint = void 0;
+exports.sample_res = exports.sample_req = exports.initial = void 0;
+exports.endpoint = endpoint;
 exports.get = get;
+const helpers_1 = require("./helpers");
 const config_1 = require("./config");
 const client_1 = require("./client");
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-const endpoint = ({ pages }) => (0, config_1.baseUrl)(`/financial-list?pages=${pages}`);
-exports.endpoint = endpoint;
-function get(_a) {
-    return __awaiter(this, arguments, void 0, function* ({ pages = 1 }) {
-        return yield (0, client_1.client)((0, exports.endpoint)({ pages }))
+exports.initial = {
+    pages: 1,
+};
+function endpoint(params, query) {
+    return helpers_1.builder.stringify([config_1.config.baseUrl, 'financial-list'], query);
+}
+function get(params_1) {
+    return __awaiter(this, arguments, void 0, function* (params, query = exports.initial) {
+        return yield (0, client_1.client)(endpoint(params, query))
             .then(x => x.json())
             .catch(() => []);
     });
@@ -28,7 +34,7 @@ function get(_a) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-exports.sample_req = 'https://proj-finance-backend.onrender.com/financial-list?pages=1';
+exports.sample_req = 'https://project-finance-backend.onrender.com/financial-list?pages=1';
 exports.sample_res = [
     {
         "Country": "USA",

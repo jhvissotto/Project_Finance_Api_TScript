@@ -1,40 +1,46 @@
-import { baseUrl } from './config'
+import { builder } from './helpers'
+import { config } from './config'
 import { client } from './client'
 
 
-// ================================================= //
-// ==================== Request ==================== //
-// ================================================= //
-export type Req = { pages:number }
+// =================================================== //
+// ==================== Interface ==================== //
+// =================================================== //
+export type Req_params = {}
+export type Req_query  = { pages:number }
 
-
-// ================================================== //
-// ==================== Response ==================== //
-// ================================================== //
 export type Res = Array<{
-    Country: string 
-    Ticker:  string 
-    Name:    string 
-    Slug:    string 
+  Country: string 
+  Ticker:  string 
+  Name:    string 
+  Slug:    string 
 }>
 
 
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-export const endpoint = ({ pages }: Req) => baseUrl(`/financial-list?pages=${pages}`)
+export const initial = {
+  pages: 1,
+} as Req_query
 
-export async function get({ pages = 1 }:Req) {
-    return await client(endpoint({ pages }))
-        .then(x => x.json() as Promise<Res>)
-        .catch(() => [])
+
+export function endpoint(params:Req_params, query:Req_query) {
+  return builder.stringify([config.baseUrl, 'financial-list'], query)
+}
+
+
+export async function get(params:Req_params, query=initial) {
+  return await client(endpoint(params, query))
+    .then(x => x.json() as Promise<Res>)
+    .catch(() => [])
 }
 
 
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://proj-finance-backend.onrender.com/financial-list?pages=1'
+export const sample_req = 'https://project-finance-backend.onrender.com/financial-list?pages=1'
 export const sample_res = [
     {
       "Country": "USA",

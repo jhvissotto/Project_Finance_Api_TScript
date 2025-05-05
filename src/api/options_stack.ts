@@ -1,17 +1,15 @@
-import { baseUrl } from './config'
+import { builder } from './helpers'
+import { config } from './config'
 import { client } from './client'
 
 
-// ================================================= //
-// ==================== Request ==================== //
-// ================================================= //
-export type Req = { TICKER:string }
+// =================================================== //
+// ==================== Interface ==================== //
+// =================================================== //
+export type Req_params = { TICKER:string }
+export type Req_query  = {  }
 
 
-
-// ================================================== //
-// ==================== Response ==================== //
-// ================================================== //
 export type Res = Array<{
     Code:    string,
     Ticker:  string,
@@ -27,13 +25,19 @@ export type Res = Array<{
 }>
 
 
+
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-const endpoint = ({ TICKER }: Req) => baseUrl(`/options-stack/${TICKER}`)
+export const initial = {} as Req_query
 
-export async function get({ TICKER }:Req) {
-    return await client(endpoint({ TICKER }))
+
+export function endpoint({ TICKER }:Req_params) {
+  return builder.stringify([config.baseUrl, 'options-stack', TICKER], {})
+}
+
+export async function get(params:Req_params) {
+    return await client(endpoint(params))
         .then(x => x.json() as Promise<Res>)
         .catch(x => [])
 }
@@ -42,7 +46,7 @@ export async function get({ TICKER }:Req) {
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://proj-finance-backend.onrender.com/options-stack/MSFT'
+export const sample_req = 'https://project-finance-backend.onrender.com/options-stack/MSFT'
 export const sample_res = [
   {
     "Code": "MSFT250411C00230000",

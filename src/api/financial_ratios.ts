@@ -1,16 +1,15 @@
-import { baseUrl } from './config'
+import { builder } from './helpers'
+import { config } from './config'
 import { client } from './client'
 
 
-// ================================================= //
-// ==================== Request ==================== //
-// ================================================= //
-export type Req = { slug:string }
+// =================================================== //
+// ==================== Interface ==================== //
+// =================================================== //
+export type Req_params = { slug:string }
+export type Req_query  = {}
 
 
-// ================================================== //
-// ==================== Response ==================== //
-// ================================================== //
 export type Res = {
     Raw: Array<{
         Year:    number,
@@ -42,19 +41,25 @@ export type Res = {
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-export const endpoint = ({ slug }: Req) => baseUrl(`/financial-ratios/${slug}`)
+export const initial = {} as Req_query
 
-export async function get({ slug }:Req) {
-    return await client(endpoint({ slug }))
+
+export function endpoint({ slug }:Req_params) {
+  return builder.stringify([config.baseUrl, 'financial-ratios', slug], {})
+}
+
+
+export async function get(params:Req_params) {
+    return await client(endpoint(params))
         .then(x => x.json() as Promise<Res>)
-        .catch(x => {})
+        .catch(() => {})
 }
 
 
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://proj-finance-backend.onrender.com/financial-ratios/microsoft'
+export const sample_req = 'https://project-finance-backend.onrender.com/financial-ratios/microsoft'
 export const sample_res = {
     "Raw": [
       {

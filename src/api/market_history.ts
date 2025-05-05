@@ -1,21 +1,22 @@
-import { type Periods, type Untils, initial } from './protocols'
-import { baseUrl } from './config'
+import { builder } from './helpers'
+import * as protocols from './protocols'
+import { config } from './config'
 import { client } from './client'
 
 
-// ================================================= //
-// ==================== Request ==================== //
-// ================================================= //
-export type Req = { 
-    TICKER:   string
-    period?:  Periods
-    until?:   Untils
+// =================================================== //
+// ==================== Interface ==================== //
+// =================================================== //
+export type Req_params = {
+  TICKER:   string
+}
+
+export type Req_query = { 
+    period?:  protocols.Periods
+    until?:   protocols.Untils
 }
 
 
-// ================================================== //
-// ==================== Response ==================== //
-// ================================================== //
 export type Res = Array<{
   "Date":       string, 
   "Adj Close":  number,
@@ -30,13 +31,19 @@ export type Res = Array<{
 // ================================================== //
 // ==================== Endpoint ==================== //
 // ================================================== //
-export const endpoint = ({ TICKER, period, until }: Req) => {
-  return baseUrl(`/market-history/${TICKER}?period=${period}&until=${until}`)
+export const initial = {
+  period: protocols.initial.period, 
+  until:  protocols.initial.until,
+} as Req_query
+
+
+export function endpoint({ TICKER }:Req_params, query:Req_query) {
+  return builder.stringify([config.baseUrl, 'market-history', TICKER], query)
 }
 
 
-export async function get({ TICKER, period=initial.period, until=initial.until }:Req) {
-    return await client(endpoint({ TICKER, period, until }))
+export async function get({ TICKER }:Req_params, query=initial) {
+    return await client(endpoint({ TICKER }, query))
         .then(x => x.json() as Promise<Res>)
         .catch(() => [])
 }
@@ -45,7 +52,7 @@ export async function get({ TICKER, period=initial.period, until=initial.until }
 // ================================================ //
 // ==================== Sample ==================== //
 // ================================================ //
-export const sample_req = 'https://proj-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max'
+export const sample_req = 'https://project-finance-backend.onrender.com/market-history/MSFT?period=1mo&until=max'
 export const sample_res = [
   {
     "Date": "2025-04-01T00:00:00",
